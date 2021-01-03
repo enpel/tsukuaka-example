@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TimeCounter : MonoBehaviour
 {
     [SerializeField] float limitTime = 30; //秒
+    [SerializeField] Text timeText;
 
     float currentTime = 0;
 
@@ -25,5 +27,7 @@ public class TimeCounter : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+
+        timeText.text = $"あと{currentTime:#.00}秒";
     }
 }
