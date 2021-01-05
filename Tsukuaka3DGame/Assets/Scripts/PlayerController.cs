@@ -6,14 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float runSpeed = 3.0f;
     Rigidbody _rigidbody;
-    MultipleJump _jumpModule;
+    PowerfulJump _jumpModule;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
 
-        _jumpModule = this.gameObject.AddComponent<MultipleJump>();
+        _jumpModule = this.gameObject.AddComponent<PowerfulJump>();
     }
 
     private void Update()
