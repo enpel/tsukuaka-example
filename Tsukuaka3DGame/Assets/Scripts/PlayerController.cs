@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float runSpeed = 3.0f;
     Rigidbody _rigidbody;
-    PowerfulJump _jumpModule;
+    IJumpModule _jumpModule;
 
     // Start is called before the first frame update
     void Start()

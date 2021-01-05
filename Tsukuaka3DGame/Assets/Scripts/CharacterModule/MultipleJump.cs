@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MultipleJump : MonoBehaviour
+public class MultipleJump : MonoBehaviour, IJumpModule
 {
     [SerializeField] int maxJumpCount = 2;
     [SerializeField] int firstJumpPower = 300;

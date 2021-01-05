@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PowerfulJump : MonoBehaviour
+public class PowerfulJump : MonoBehaviour, IJumpModule
 {
     [SerializeField] int jumpPower = 500;
 
