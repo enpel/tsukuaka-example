@@ -697,6 +697,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 836163092}
+    - target: {fileID: 8216127171018049010, guid: 6992d4270a41dc945ada18035a5b1fe2,
+        type: 3}
+      propertyPath: bgmClip
+      value: 
+      objectReference: {fileID: 8300000, guid: db3076734ccf1bc4799721119e2172a0, type: 3}
     - target: {fileID: 8216127171018049011, guid: 6992d4270a41dc945ada18035a5b1fe2,
         type: 3}
       propertyPath: m_LocalPosition.x
