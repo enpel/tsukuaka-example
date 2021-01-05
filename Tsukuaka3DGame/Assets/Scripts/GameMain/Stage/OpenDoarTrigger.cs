@@ -8,7 +8,7 @@ public class OpenDoarTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.IsPlayerObject())
         {
             doar.Open();
         }

@@ -6,7 +6,7 @@ public class AdditionalModuleItem : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.IsPlayerObject())
         {
             var playerController = other.GetComponent<PlayerController>();
             var jumpModule = other.gameObject.AddComponent<MultipleJump>();
