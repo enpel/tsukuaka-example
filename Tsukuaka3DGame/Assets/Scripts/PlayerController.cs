@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
+    }
 
-        _jumpModule = this.gameObject.AddComponent<PowerfulJump>();
+    public void SetJumpModule(IJumpModule jumpModule)
+    {
+        _jumpModule = jumpModule;
     }
 
     private void Update()
@@ -25,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _jumpModule.Jump();
+            _jumpModule?.Jump(); // if (_jumpModule != null) _jumpModule.Jump();
         }
     }
 }
