@@ -19,6 +19,7 @@ public class StageDirector : MonoBehaviour
     {
         timeCounter.SetActiveText(false);
         yield return new WaitForSeconds(1f);
+        this.gameObject.GetComponent<AudioSource>().Play();
         centerText.gameObject.SetActive(true);
         centerText.text = "3";
         yield return new WaitForSeconds(1f);
