@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float runSpeed = 3.0f;
+    [SerializeField] int maxJumpCount = 2;
 
     bool _isJumping = false;
+    int _currentJumpCount = 0;
     Rigidbody _rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
-
-
     }
 
     private void Update()
@@ -24,11 +24,12 @@ public class PlayerController : MonoBehaviour
 
         this.transform.Translate(new Vector3(x, 0, z) * Time.deltaTime * runSpeed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !_isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && _currentJumpCount < maxJumpCount)
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(Vector3.up * 300);
             _isJumping = true;
+            _currentJumpCount++;
         }
 
         if (_isJumping && _rigidbody.velocity.y < 0)
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.distance < 1.05f)
                 {
                     _isJumping = false;
+                    _currentJumpCount = 0;
                 }
             }
         }
