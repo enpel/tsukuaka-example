@@ -8,6 +8,6 @@ public class TitleController : MonoBehaviour
 {
     public void GameStart()
     {
-        SceneManager.LoadScene("GameMain");
+        SceneManager.LoadScene("HowToPlay");
     }
 }
