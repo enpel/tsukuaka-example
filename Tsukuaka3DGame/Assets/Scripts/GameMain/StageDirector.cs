@@ -9,8 +9,9 @@ public class StageDirector : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Text centerText;
-    [SerializeField] AudioClip bgmClip;
-    // Start is called before the first frame update
+    [SerializeField] AudioSource bgmSource;
+    [SerializeField] AudioSource seSource;
+
     void Start()
     {
         StartCoroutine(GameStart());
@@ -19,15 +20,18 @@ public class StageDirector : MonoBehaviour
     IEnumerator GameStart()
     {
         timeCounter.SetActiveText(false);
+
         yield return new WaitForSeconds(1f);
-        var audioSource = this.gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(audioSource.clip);
+        seSource.Play();
         centerText.gameObject.SetActive(true);
         centerText.text = "3";
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(1f);        
         centerText.text = "2";
+
         yield return new WaitForSeconds(1f);
         centerText.text = "1";
+
         yield return new WaitForSeconds(1f);
         GameObject.Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
@@ -36,8 +40,6 @@ public class StageDirector : MonoBehaviour
         timeCounter.SetActiveText(true);
         yield return new WaitForSeconds(1f);
 
-        audioSource.clip = bgmClip;
-        audioSource.loop = true;
-        audioSource.Play();
+        bgmSource.Play();
     }
 }
