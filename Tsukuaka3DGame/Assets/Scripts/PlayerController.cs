@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _currentJumpCount < maxJumpCount)
         {
             _rigidbody.velocity = Vector3.zero;
-            _rigidbody.AddForce(Vector3.up * 300);
+            var jumpPower = _currentJumpCount == 0 ? 300 : 250;
+            _rigidbody.AddForce(Vector3.up * jumpPower);
             _isJumping = true;
             _currentJumpCount++;
         }
