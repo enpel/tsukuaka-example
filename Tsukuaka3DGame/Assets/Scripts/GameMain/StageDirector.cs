@@ -25,8 +25,8 @@ public class StageDirector : MonoBehaviour
         centerText.text = "2";
         yield return new WaitForSeconds(1f);
         centerText.text = "1";
-        GameObject.Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         yield return new WaitForSeconds(1f);
+        GameObject.Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         centerText.gameObject.SetActive(false);
         timeCounter.SetPlaying(true);
         timeCounter.SetActiveText(true);
