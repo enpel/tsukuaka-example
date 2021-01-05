@@ -5,16 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float runSpeed = 3.0f;
-    [SerializeField] int maxJumpCount = 2;
-
-    bool _isJumping = false;
-    int _currentJumpCount = 0;
     Rigidbody _rigidbody;
+    MultipleJump _jumpModule;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
+
+        _jumpModule = this.gameObject.AddComponent<MultipleJump>();
     }
 
     private void Update()
@@ -24,27 +23,9 @@ public class PlayerController : MonoBehaviour
 
         this.transform.Translate(new Vector3(x, 0, z) * Time.deltaTime * runSpeed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _currentJumpCount < maxJumpCount)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rigidbody.velocity = Vector3.zero;
-            var jumpPower = _currentJumpCount == 0 ? 300 : 250;
-            _rigidbody.AddForce(Vector3.up * jumpPower);
-            _isJumping = true;
-            _currentJumpCount++;
-        }
-
-        if (_isJumping && _rigidbody.velocity.y < 0)
-        {
-            RaycastHit hit;
-            // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(transform.position, Vector3.down, out hit))
-            {
-                if (hit.distance < 1.05f)
-                {
-                    _isJumping = false;
-                    _currentJumpCount = 0;
-                }
-            }
+            _jumpModule.Jump();
         }
     }
 }
