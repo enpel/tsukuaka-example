@@ -17,15 +17,18 @@ public class StageDirector : MonoBehaviour
 
     IEnumerator GameStart()
     {
+        timeCounter.SetActiveText(false);
         yield return new WaitForSeconds(1f);
         centerText.gameObject.SetActive(true);
         centerText.text = "3";
         yield return new WaitForSeconds(1f);
         centerText.text = "2";
-        GameObject.Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         yield return new WaitForSeconds(1f);
         centerText.text = "1";
+        GameObject.Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         yield return new WaitForSeconds(1f);
         centerText.gameObject.SetActive(false);
+        timeCounter.SetPlaying(true);
+        timeCounter.SetActiveText(true);
     }
 }

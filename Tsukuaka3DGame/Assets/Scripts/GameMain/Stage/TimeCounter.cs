@@ -10,6 +10,7 @@ public class TimeCounter : MonoBehaviour
     [SerializeField] Text timeText;
 
     float currentTime = 0;
+    bool isPlaying = false;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class TimeCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isPlaying) { return; }
         currentTime -= Time.deltaTime;
 
         if (currentTime < 0)
@@ -30,4 +32,15 @@ public class TimeCounter : MonoBehaviour
 
         timeText.text = $"あと{currentTime:#.00}秒";
     }
+
+    public void SetPlaying(bool value)
+    {
+        isPlaying = value;
+    }
+
+    public void SetActiveText(bool value)
+    {
+        timeText.gameObject.SetActive(value);
+    }
+
 }
