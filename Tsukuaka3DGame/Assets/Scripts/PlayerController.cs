@@ -19,5 +19,10 @@ public class PlayerController : MonoBehaviour
         var z = Input.GetAxis("Vertical");　// 縦方向の入力が-1～+1
 
         this.transform.Translate(new Vector3(x, 0, z) * Time.deltaTime * runSpeed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+        }
     }
 }
